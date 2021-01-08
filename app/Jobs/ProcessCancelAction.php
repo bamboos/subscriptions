@@ -10,7 +10,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class ProcessInitAction implements ShouldQueue
+class ProcessCancelAction implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -28,6 +28,6 @@ class ProcessInitAction implements ShouldQueue
      */
     public function handle(Manager $manager)
     {
-        $manager->init($this->data);
+        $manager->cancel($this->data);
     }
 }

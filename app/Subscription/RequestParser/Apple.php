@@ -9,6 +9,11 @@ class Apple implements RequestParser
 {
     public function parse(array $data): ActionData
     {
-        return new ActionData('', '', '');
+        return new ActionData(
+            'init',
+            'apple',
+            '1',
+            true
+        );
     }
 }

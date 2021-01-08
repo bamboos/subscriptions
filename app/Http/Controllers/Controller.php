@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProcessCancelAction;
 use App\Jobs\ProcessInitAction;
+use App\Jobs\ProcessRenewAction;
 use App\Subscription\ActionData;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -16,7 +18,9 @@ class Controller extends BaseController
     protected function dispatchAction(ActionData $data): void
     {
         match ($data->action) {
-            'init' => ProcessInitAction::dispatch($data)
+            'init' => ProcessInitAction::dispatch($data),
+            'renew' => ProcessRenewAction::dispatch($data),
+            'cancel' => ProcessCancelAction::dispatch($data)
         };
     }
 }
