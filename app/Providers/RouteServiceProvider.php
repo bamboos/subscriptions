@@ -46,6 +46,11 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+
+            Route::prefix('hook')
+                ->middleware('hook')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/hook.php'));
         });
     }
 

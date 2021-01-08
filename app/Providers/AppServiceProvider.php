@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Hook\AppleController;
+use App\Subscription\RequestParser;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->when(AppleController::class)
+            ->needs(RequestParser::class)
+            ->give(RequestParser\Apple::class);
     }
 
     /**
